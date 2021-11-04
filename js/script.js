@@ -80,5 +80,27 @@ function cardGenerator (card, container) {
 
 
 // Prendo riferimento bottone sul DOM
-const btn = document.getElementById('addMemberButton'); 
+const btn = document.getElementById('addMemberButton');
+
+btn.addEventListener('click', function() {
+    teamCont.innerHTML = ''; 
+
+    // Collego ref dal DOM 
+    const nameUser = document.getElementById('name').value;
+    console.log(nameUser);
+    const roleUser = document.getElementById('role').value;
+    console.log(roleUser);
+    const imgUser = document.getElementById('image').value;
+    console.log(imgUser);
+
+    //Aggiungo nuovo oggetto  
+    teamList.push ({
+        img: imgUser,
+        name: nameUser,
+        role: roleUser,
+    })
+
+    // Ristampo nuovo array object con push elemento richiamando la funzione
+    cardGenerator (teamList, teamCont)
+})
 
