@@ -78,7 +78,6 @@ function cardGenerator (card, container) {
 // 2 - All'inserimento dei dati inseriti dall'utente in ogni sezione aggiungo una nuova card nell'array con gli oggetti
 // 3 - Mostro la nuova carta nel DOM
 
-
 // Prendo riferimento bottone sul DOM
 const btn = document.getElementById('addMemberButton');
 
@@ -87,11 +86,8 @@ btn.addEventListener('click', function() {
 
     // Collego ref dal DOM 
     const nameUser = document.getElementById('name').value;
-    console.log(nameUser);
     const roleUser = document.getElementById('role').value;
-    console.log(roleUser);
     const imgUser = document.getElementById('image').value;
-    console.log(imgUser);
 
     //Aggiungo nuovo oggetto  
     teamList.push ({
@@ -103,4 +99,3 @@ btn.addEventListener('click', function() {
     // Ristampo nuovo array object con push elemento richiamando la funzione
     cardGenerator (teamList, teamCont)
 })
-
