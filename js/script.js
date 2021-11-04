@@ -19,43 +19,54 @@ const teamList = [
         role: 'Founder & CEO',
     },
     {
-        img: 'img/wayne-barnett-founder-ceo.jpg',
+        img: 'img/angela-caroll-chief-editor.jpg',
         name: 'Angela Caroll',
         role: 'Chief Editor',
     },
     {
-        img: 'img/wayne-barnett-founder-ceo.jpg',
+        img: 'img/walter-gordon-office-manager.jpg',
         name: 'Walter Gordon',
         role: 'Office Manager',
     },
     {
-        img: 'img/wayne-barnett-founder-ceo.jpg',
+        img: 'img/angela-lopez-social-media-manager.jpg',
         name: 'Angela Lopez',
         role: 'Social Media Manager',
     },
     {
-        img: 'img/wayne-barnett-founder-ceo.jpg',
+        img: 'img/scott-estrada-developer.jpg',
         name: 'Scott Estrada',
         role: 'Developer'
     },
     {
-        img: 'img/wayne-barnett-founder-ceo.jpg',
+        img: 'img/barbara-ramos-graphic-designer.jpg',
         name: 'Barbara Ramos',
         role: 'Graphic Designer',
     },
 ]
-console.log(teamList);
-console.table(teamList);
 
 // Creo il ciclo per stampare i membri del team
+// 1 - Mi collego all'elemento alla classe dove far uscire la stampa sul DOM
+const teamCont = document.querySelector('.team-container');
 
-// Mi collego all'elemento alla classe dove far uscire la stampa sul DOM
-const teamCont = document.querySelector('team-container');
-
-// Ciclo for
+// 2 - Ciclo for per iterare su gli oggetti in array
 for (let i = 0; i < teamList.length; i++) {
     console.log(teamList);
     // Prendo gli oggetti dell'array e faccio una variabile
     const teamCard = teamList[i];
     console.log('Oggetti array', teamCard);
+
+    // Con la variabile creata (teamCard), contenente le keys di ogni oggetto, inserisco l'HTML per vedere sul DOM ogni card
+    teamCont.innerHTML += `<div class="team-card">
+                              <div class="card-image">
+                                  <img
+                                  src="${teamCard.img}"
+                                  alt="Wayne Barnett"
+                                  />
+                              </div>
+                              <div class="card-text">
+                                  <h3>${teamCard.name}</h3>
+                                  <p>${teamCard.role}</p>
+                              </div>
+                            </div>`
 }
