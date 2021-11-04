@@ -4,8 +4,6 @@
 // - Utilizziamo poi gli input presenti nella pagina per permettere all’utente di aggiungere nuovi membri del team.
 // Inserire a inizio del file JavaScript una sezione di commento dove scrivere gli step richiesti di logica in italiano, per aiutarvi a ragionare prima della stesura del codice.
 
-console.log('JS is ok');
-
 // 1 - Creazione dell'array con gli oggetti
 // 2 - Stampa delle immagini
 // 3 - Inserire input per aggiungere
@@ -47,26 +45,40 @@ const teamList = [
 
 // Creo il ciclo per stampare i membri del team
 // 1 - Mi collego all'elemento alla classe dove far uscire la stampa sul DOM
+// Ref
 const teamCont = document.querySelector('.team-container');
 
-// 2 - Ciclo for per iterare su gli oggetti in array
-for (let i = 0; i < teamList.length; i++) {
-    console.log(teamList);
-    // Prendo gli oggetti dell'array e faccio una variabile
-    const teamCard = teamList[i];
-    console.log('Oggetti array', teamCard);
+// 2 - Alternativa con funzione
+cardGenerator(teamList, teamCont);
 
-    // Con la variabile creata (teamCard), contenente le keys di ogni oggetto, inserisco l'HTML per vedere sul DOM ogni card
-    teamCont.innerHTML += `<div class="team-card">
-                              <div class="card-image">
-                                  <img
-                                  src="${teamCard.img}"
-                                  alt="Wayne Barnett"
-                                  />
-                              </div>
-                              <div class="card-text">
-                                  <h3>${teamCard.name}</h3>
-                                  <p>${teamCard.role}</p>
-                              </div>
-                            </div>`
-}
+// 3 - Ciclo for per iterare su gli oggetti in array
+function cardGenerator (card, container) {
+    for (let i = 0; i < card.length; i++) {
+        const teamCard = card[i];
+    
+        container.innerHTML += `<div class="team-card">
+                                  <div class="card-image">
+                                      <img
+                                      src="${teamCard.img}"
+                                      alt="Wayne Barnett"
+                                      />
+                                  </div>
+                                  <div class="card-text">
+                                      <h3>${teamCard.name}</h3>
+                                      <p>${teamCard.role}</p>
+                                  </div>
+                                </div>`;
+                            }
+                        }
+
+
+// Crea evento aggiunzione card su form
+
+// 1 - Aggiungo collegamento al bottone
+// 2 - All'inserimento dei dati inseriti dall'utente in ogni sezione aggiungo una nuova card nell'array con gli oggetti
+// 3 - Mostro la nuova carta nel DOM
+
+
+// Prendo riferimento bottone sul DOM
+const btn = document.getElementById('addMemberButton'); 
+
