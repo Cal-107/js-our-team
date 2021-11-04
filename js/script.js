@@ -41,17 +41,49 @@ const teamList = [
         name: 'Barbara Ramos',
         role: 'Graphic Designer',
     },
-]
+];
 
 // Creo il ciclo per stampare i membri del team
-// 1 - Mi collego all'elemento alla classe dove far uscire la stampa sul DOM
 // Ref
 const teamCont = document.querySelector('.team-container');
 
-// 2 - Alternativa con funzione
 cardGenerator(teamList, teamCont);
 
-// 3 - Ciclo for per iterare su gli oggetti in array
+// Prendo riferimento bottone sul DOM
+const btn = document.getElementById('addMemberButton');
+
+btn.addEventListener('click', function() {
+
+    let nameUser = document.getElementById('name');
+    let roleUser = document.getElementById('role');
+    let imgUser = document.getElementById('image');
+    
+    if ((nameUser.value.trim() == '') || (roleUser.value.trim() == '') || (imgUser.value.trim() == '')) {
+        alert('Non può lasciare campi vuoti')
+    } else {
+        teamCont.innerHTML = '';
+                teamList.push ({
+                    img: imgUser.value.trim(),
+                    name: nameUser.value.trim(),
+                    role: roleUser.value.trim(),
+                })
+                
+                cardGenerator (teamList, teamCont)
+                
+                nameUser.value = '';
+                roleUser.value = '';
+                imgUser.value = '';
+    }
+})
+
+
+
+
+
+/**
+ * Function Section
+ */
+
 function cardGenerator (card, container) {
     for (let i = 0; i < card.length; i++) {
         const teamCard = card[i];
@@ -68,37 +100,5 @@ function cardGenerator (card, container) {
                                       <p>${teamCard.role}</p>
                                   </div>
                                 </div>`;
-                            }
-                        }
-
-
-// Crea evento aggiunzione card su form
-
-// 1 - Aggiungo collegamento al bottone
-// 2 - All'inserimento dei dati inseriti dall'utente in ogni sezione aggiungo una nuova card nell'array con gli oggetti
-// 3 - Mostro la nuova carta nel DOM
-
-// Prendo riferimento bottone sul DOM
-const btn = document.getElementById('addMemberButton');
-
-btn.addEventListener('click', function() {
-    teamCont.innerHTML = '';
-    // Collego ref dal DOM 
-    let nameUser = document.getElementById('name');
-    let roleUser = document.getElementById('role');
-    let imgUser = document.getElementById('image');
-    
-    //Aggiungo nuovo oggetto  
-    teamList.push ({
-        img: imgUser.value,
-        name: nameUser.value,
-        role: roleUser.value,
-    })
-    
-    // Ristampo nuovo array object con push elemento richiamando la funzione
-    cardGenerator (teamList, teamCont)
-    
-    nameUser.value = '';
-    roleUser.value = '';
-    imgUser.value = '';
-})
+                            };
+                        };
